@@ -1,0 +1,15 @@
+D:\Kyrsach\MONOPOLY\BusinessLogic\bin\Debug\net8.0\BusinessLogic.deps.json
+D:\Kyrsach\MONOPOLY\BusinessLogic\bin\Debug\net8.0\BusinessLogic.dll
+D:\Kyrsach\MONOPOLY\BusinessLogic\bin\Debug\net8.0\BusinessLogic.pdb
+D:\Kyrsach\MONOPOLY\BusinessLogic\bin\Debug\net8.0\Domain.dll
+D:\Kyrsach\MONOPOLY\BusinessLogic\bin\Debug\net8.0\Domain.pdb
+D:\Kyrsach\MONOPOLY\BusinessLogic\obj\Debug\net8.0\BusinessLogic.csproj.AssemblyReference.cache
+D:\Kyrsach\MONOPOLY\BusinessLogic\obj\Debug\net8.0\BusinessLogic.GeneratedMSBuildEditorConfig.editorconfig
+D:\Kyrsach\MONOPOLY\BusinessLogic\obj\Debug\net8.0\BusinessLogic.AssemblyInfoInputs.cache
+D:\Kyrsach\MONOPOLY\BusinessLogic\obj\Debug\net8.0\BusinessLogic.AssemblyInfo.cs
+D:\Kyrsach\MONOPOLY\BusinessLogic\obj\Debug\net8.0\BusinessLogic.csproj.CoreCompileInputs.cache
+D:\Kyrsach\MONOPOLY\BusinessLogic\obj\Debug\net8.0\Business.CF5D6E35.Up2Date
+D:\Kyrsach\MONOPOLY\BusinessLogic\obj\Debug\net8.0\BusinessLogic.dll
+D:\Kyrsach\MONOPOLY\BusinessLogic\obj\Debug\net8.0\refint\BusinessLogic.dll
+D:\Kyrsach\MONOPOLY\BusinessLogic\obj\Debug\net8.0\BusinessLogic.pdb
+D:\Kyrsach\MONOPOLY\BusinessLogic\obj\Debug\net8.0\ref\BusinessLogic.dll

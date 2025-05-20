@@ -1,0 +1,20 @@
+﻿public enum PropertyGroup
+{
+    Brown,
+    LightBlue,
+    Pink,
+    Orange,
+    Red,
+    Yellow,
+    Green,
+    DarkBlue,
+    communal,
+    doroga,
+    shans,
+    kazna,
+    kazna100,
+    kazna200,
+    turma,
+    prostou,
+    start
+}
