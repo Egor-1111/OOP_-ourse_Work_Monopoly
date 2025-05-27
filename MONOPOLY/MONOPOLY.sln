@@ -9,6 +9,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BusinessLogic", "BusinessLo
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MonopolyGameApp", "MonopolyGameApp\MonopolyGameApp.csproj", "{E01A81F0-F637-41A9-A379-12E1CF682A80}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Monopoly.Persistence", "Monopoly.Persistence\Monopoly.Persistence.csproj", "{917DC44A-3670-4E1D-96CE-F18AD18C768E}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -28,6 +30,10 @@ Global
 		{E01A81F0-F637-41A9-A379-12E1CF682A80}.Debug|Any CPU.Deploy.0 = Debug|Any CPU
 		{E01A81F0-F637-41A9-A379-12E1CF682A80}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{E01A81F0-F637-41A9-A379-12E1CF682A80}.Release|Any CPU.Build.0 = Release|Any CPU
+		{917DC44A-3670-4E1D-96CE-F18AD18C768E}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{917DC44A-3670-4E1D-96CE-F18AD18C768E}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{917DC44A-3670-4E1D-96CE-F18AD18C768E}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{917DC44A-3670-4E1D-96CE-F18AD18C768E}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

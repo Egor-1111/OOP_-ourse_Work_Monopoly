@@ -66,6 +66,8 @@
 
 	<ItemGroup>
 	  <ProjectReference Include="..\BusinessLogic\BusinessLogic.csproj" />
+	  <ProjectReference Include="..\Domain\Domain.csproj" />
+	  <ProjectReference Include="..\Monopoly.Persistence\Monopoly.Persistence.csproj" />
 	</ItemGroup>
 
 </Project>

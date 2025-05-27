@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Numerics;
+using System.Text.Json;
 using System.Threading.Tasks;
 using BusinessLogic.Services.Interfaces;
 using BusinessLogic.Services.Logic;
@@ -8,7 +9,9 @@ using Domain.Models;
 using Monopoly.BusinessLogic.Services.Interfaces;
 using Monopoly.BusinessLogic.Services.Logic;
 using Monopoly.Domain.Enums;
-
+using System.Text.Json.Serialization;
+using Monopoly.Persistence.Interfaces;
+using Monopoly.Persistence.Models;
 
 public class GameService : IGameService
 {
@@ -19,9 +22,9 @@ public class GameService : IGameService
     private readonly IPropertyService _propertyService;
     private readonly PropertyRepository _propertyRepository;
     private readonly CardService _cardService;
-    private readonly IGameUIHandler _uiHandler;
-
-    public GameService(IPlayerService playerService, IPropertyService propertyService, PropertyRepository propertyRepository, IGameUIHandler uiHandler)
+    private IGameUIHandler? _uiHandler;
+    private readonly IGamePersistenceService _persistenceService;
+    public GameService(IPlayerService playerService, IPropertyService propertyService, PropertyRepository propertyRepository, IGamePersistenceService persistenceService)
     {
         _playerService = playerService;
         _propertyService = propertyService;
@@ -30,145 +33,87 @@ public class GameService : IGameService
         _currentPlayerIndex = 0;
         _dice = new Dice();
         _cardService = new CardService();
-         _uiHandler = uiHandler;
+        _persistenceService = persistenceService;
     }
 
-   
-    public async Task Start()
+    public void SetUIHandler(IGameUIHandler handler)
     {
-        await _uiHandler.UpdateLabelAsync("Игра запускается...");
+        _uiHandler = handler;
 
-        await Task.Delay(1000);
+        // передаём дальше, если умеет
+        if (_playerService is PlayerService player)
+            player.SetUIHandler(handler);
 
-        await _uiHandler.ShowMessageAsync("Добро пожаловать в Монополию!");
-
-        await _uiHandler.UpdateLabelAsync("Первый игрок ходит!");
-        await InitializePlayersAsync();
-
-        while (!GameOver())
-        {
-            Player currentPlayer = GetCurrentPlayer();
-            await _uiHandler.ShowMessageAsync($"\nХод игрока {currentPlayer.Name}");
-
-            if (currentPlayer.Status == PlayerStatus.InJail)
-            {
-                if (currentPlayer.KolInTurma == 2)
-                {
-                    _playerService.PayToLeaveJail(currentPlayer);
-                    await _uiHandler.ShowMessageAsync($"{currentPlayer.Name} заплатил и вышел из тюрьмы.");
-
-                }
-                else if(currentPlayer.Status == PlayerStatus.InJail){
-                    int jailChoice = await _uiHandler.ShowChoiceAsync(
-                        $"{currentPlayer.Name} в тюрьме. Выберите действие:",
-                        "Попытаться выкинуть дубль",
-                        "Заплатить $50 за выход",
-                        "Использовать карточку 'Освобождение' (если есть)");
-
-
-                    switch (jailChoice)
-                    {
-                        case 1:
-                            _playerService.AttemptToLeaveJail(currentPlayer, _dice);
-                            break;
-                        case 2:
-                            _playerService.PayToLeaveJail(currentPlayer);
-                            break;
-                        case 3:
-                            if (currentPlayer.HasGetOutOfJailFreeCard)
-                            {
-                                currentPlayer.HasGetOutOfJailFreeCard = false;
-                                currentPlayer.Status = PlayerStatus.Active;
-                                currentPlayer.KolInTurma = 0;
-                                await _uiHandler.ShowMessageAsync("Использована карточка 'Освобождение из тюрьмы'");
-                                // Вернуть карточку в колоду
-                                _cardService.ReturnCard(new CommunityChestCard { GetOutOfJailFree = true });
-                            }
-                            else
-                            {
-                                await _uiHandler.ShowMessageAsync("У вас нет карточки 'Освобождение из тюрьмы'");
-                            }
-                            break;
-                    } 
-                }
-                
-
-            }
-
-            if (currentPlayer.Status == PlayerStatus.Active)
-            {
-                if (currentPlayer.DoubleThenTurma == 0)
-                {
-                    await _uiHandler.GetInputAsync("Нажмите Enter чтобы бросить кубики...");
-                    // Бросок кубиков
-                    _dice.Roll();
-                    await _uiHandler.ShowMessageAsync($"Выпало: {_dice.Value1} и {_dice.Value2} — всего {_dice.Total}");
-                }
-                currentPlayer.DoubleThenTurma = 0;
-
-                if (_dice.DoubleCount != 3)
-                {
-                    // Обработка хода
-                    _playerService.MovePlear(currentPlayer, _dice.Total);
-
-                    int posPlear = currentPlayer.Position;
-                    var propertyRep = _propertyRepository.GetById(posPlear);
-                    ///////
-                    await HandlePropertyCellAsync(currentPlayer, propertyRep);
-                    ///////
-                    _playerService.GetBalace(currentPlayer);
-
-                    await HandlePlayerActionsAsync(currentPlayer);
-                }
-
-
-                // Переход хода (если не выпал дубль)
-                if (!_dice.IsDouble)
-                {
-
-                    MoveToNextPlayer();
-                }
-                else
-                {
-                    if (_dice.DoubleCount == 3)
-                    {
-                        _playerService.SendToJail(currentPlayer);
-                        _dice.DoubleCount = 0;
-                        MoveToNextPlayer();
-                    }
-                    else
-                    {
-                        await _uiHandler.ShowMessageAsync("Дубль! Игрок ходит еще раз");
-                    }
-                }
-            }
-            if (currentPlayer.Status == PlayerStatus.InJail)
-            {
-                MoveToNextPlayer();
-            }
-        }
-        await _uiHandler.ShowMessageAsync("Игра окончена!");
+        if (_propertyService is PropertyService property)
+            property.SetUIHandler(handler);
     }
+
+
 
     private List<PropertyData> ParsePropertyInput(string input, Player owner)
     {
         var ids = input.Split(',').Select(int.Parse).ToList();
         return owner.Properties.Where(p => ids.Contains(p.Id)).ToList();
     }
-    public async Task InitializePlayersAsync()
-    {
-        int playerCount = 0;
-        while (playerCount < 2 || playerCount > 4)
-        {
-            string input = await _uiHandler.GetInputAsync("Введите количество игроков (2-4):");
-            int.TryParse(input, out playerCount);
-        }
 
-        for (int i = 0; i < playerCount; i++)
+    public void ResetPlayers() => _players.Clear();
+
+    public void AddPlayer(Player player) => _players.Add(player);
+
+    public async Task OnRollDice()
+    {
+
+        Player currentPlayer = GetCurrentPlayer();
+        _dice.Roll();
+
+        currentPlayer.IsDouble = _dice.IsDouble;
+
+        await _playerService.MovePlear(currentPlayer, _dice.Total);
+        currentPlayer.IsDouble = false;
+
+    }
+
+    public async Task ForJoil1(int jail)
+    {
+        var currentPlayer = GetCurrentPlayer();
+
+
+        switch (jail)
         {
-            string name = await _uiHandler.GetInputAsync($"Введите имя игрока {i + 1}:");
-            _players.Add(new Player(name));
+            case 0:
+                await _playerService.AttemptToLeaveJail(currentPlayer, _dice);
+                if (!_dice.IsDouble)
+                {
+                    await MoveToNextPlayer();
+                }
+                break;
+            case 1:
+                await _playerService.PayToLeaveJail(currentPlayer);
+                break;
+            case 2:
+                if (currentPlayer.HasGetOutOfJailFreeCard)
+                {
+                    currentPlayer.HasGetOutOfJailFreeCard = false;
+                    currentPlayer.Status = PlayerStatus.Active;
+                    currentPlayer.KolInTurma = 0;
+                    // Вернуть карточку в колоду
+                    _cardService.ReturnCard(new CommunityChestCard { GetOutOfJailFree = true });
+                }
+
+                break;
+
         }
+    }
+
+    public string GetDice()
+    {
+        return $"{_dice.Value1} и {_dice.Value2}";
+    }
+
+    public async Task ForJoil2()
+    {
+        var currentPlayer = GetCurrentPlayer();
+        await _playerService.PayToLeaveJail(currentPlayer);
     }
     public Player GetCurrentPlayer()
     {
@@ -176,7 +121,7 @@ public class GameService : IGameService
         return _players[_currentPlayerIndex];
     }
 
-    public void MoveToNextPlayer()
+    public async Task MoveToNextPlayer()
     {
         if (_players.Count == 0) return;
 
@@ -224,7 +169,7 @@ public class GameService : IGameService
 
         if (card.GoToJail)
         {
-            _playerService.SendToJail(player);
+            await _playerService.SendToJail(player);
         }
 
         if (card.GetOutOfJailFree)
@@ -254,30 +199,21 @@ public class GameService : IGameService
             await _uiHandler.ShowMessageAsync("Вы получили карточку 'Освобождение из тюрьмы'");
         }
     }
-    //+++++++
-    async Task HandlePropertyCellAsync(Player currentPlayer, PropertyData propertyRep)
-    {
-        if (propertyRep != null && propertyRep.Status == PropertyStatus.Onsale && propertyRep.Group != PropertyGroup.kazna
-                        && propertyRep.Group != PropertyGroup.shans && propertyRep.Group != PropertyGroup.kazna
-                        && propertyRep.Group != PropertyGroup.kazna100 && propertyRep.Group != PropertyGroup.kazna200
-                        && propertyRep.Group != PropertyGroup.prostou && propertyRep.Group != PropertyGroup.turma && propertyRep.Group != PropertyGroup.start)
-        {
-            await _uiHandler.ShowMessageAsync($"Вы можете купить {propertyRep.Name} за {propertyRep.Price}$");
-            var input = await _uiHandler.GetInputAsync("Хотите купить? (y/n): ");
 
-            if (input?.ToLower() == "y")
-            {
-                try
-                {
-                    _propertyService.BuyProperty(currentPlayer, currentPlayer.Position);
-                }
-                catch (Exception ex)
-                {
-                    await _uiHandler.ShowMessageAsync($"Ошибка: {ex.Message}");
-                }
-            }
-        }
-        else if (propertyRep.Group == PropertyGroup.kazna)
+    public decimal GetPrece()
+    {
+        var currentPlayer = GetCurrentPlayer();
+        int posPlear = currentPlayer.Position;
+        var propertyRep = _propertyRepository.GetById(posPlear);
+        return propertyRep.Price;
+    }
+    public async Task HandlePropertyCellAsync()
+    {
+        var currentPlayer = GetCurrentPlayer();
+        int posPlear = currentPlayer.Position;
+        var propertyRep = _propertyRepository.GetById(posPlear);
+
+        if (propertyRep.Group == PropertyGroup.kazna)
         {
             var card = _cardService.DrawCommunityChestCard();
             await _uiHandler.ShowMessageAsync($"Карточка казны: {card.Text}");
@@ -299,7 +235,7 @@ public class GameService : IGameService
         }
         else if (propertyRep.Group == PropertyGroup.turma)
         {
-            _playerService.SendToJail(currentPlayer);
+            await _playerService.SendToJail(currentPlayer);
         }
         else if (propertyRep.Group == PropertyGroup.prostou)
         {
@@ -313,111 +249,167 @@ public class GameService : IGameService
         {
             var poluch = propertyRep.Owner;
 
-            _playerService.PayRentForStreet(currentPlayer, poluch, currentPlayer.Position);
+            await _playerService.PayRentForStreet(currentPlayer, poluch, currentPlayer.Position);
         }
         else if (propertyRep.Status == PropertyStatus.sold && propertyRep.Type == PropertyType.doroga && currentPlayer != propertyRep.Owner)
         {
             var poluch = propertyRep.Owner;
 
-            _playerService.PayRentForDoroga(currentPlayer, poluch, currentPlayer.Position);
+            await _playerService.PayRentForDoroga(currentPlayer, poluch, currentPlayer.Position);
         }
         else if (propertyRep.Status == PropertyStatus.sold && propertyRep.Type == PropertyType.communal && currentPlayer != propertyRep.Owner)
         {
             var poluch = propertyRep.Owner;
 
-            _playerService.PayRentForCommunal(currentPlayer, poluch, currentPlayer.Position, _dice);
+            await _playerService.PayRentForCommunal(currentPlayer, poluch, currentPlayer.Position, _dice);
         }
-    }
-    //+++++++
 
-    private async Task HandlePlayerActionsAsync(Player currentPlayer)
+    }
+
+    public async Task<PropertyData?> GetPropertyToBuy()
     {
-        int finish = 0;
-        while (finish == 0)
-        {
-            var choice = await _uiHandler.GetInputAsync(
-                "Выберите действие:\n" +
-                "1. Закончить ход\n" +
-                "2. Обменяться с игроком\n" +
-                "3. Построить дом/отель\n" +
-                "4. Снести дом/отель\n" +
-                "5. Заложить карточку\n" +
-                "6. Вернуть из залога\n" +
-                "Введите номер действия: ");
+        var player = GetCurrentPlayer();
+        var prop = _propertyRepository.GetById(player.Position);
 
-            switch (choice)
-            {
-                case "1":
-                    finish = 1;
-                    break;
-                case "2":
-                    await HandleTradeAsync(currentPlayer);
-                    break;
-                case "3":
-                    await HandleBuildHouseAsync(currentPlayer);
-                    break;
-                case "4":
-                    await HandleDemolishHouseAsync(currentPlayer);
-                    break;
-                case "5":
-                    await HandleMortgageAsync(currentPlayer);
-                    break;
-                case "6":
-                    await HandleUnmortgageAsync(currentPlayer);
-                    break;
-                default:
-                    await _uiHandler.ShowMessageAsync("Неверный выбор, попробуйте снова.");
-                    break;
-            }
+        if (prop == null)
+            return null;
+
+        if (prop.Status == PropertyStatus.Onsale &&
+            prop.Group != PropertyGroup.kazna &&
+            prop.Group != PropertyGroup.kazna100 &&
+            prop.Group != PropertyGroup.kazna200 &&
+            prop.Group != PropertyGroup.prostou &&
+            prop.Group != PropertyGroup.turma &&
+            prop.Group != PropertyGroup.start &&
+            prop.Group != PropertyGroup.shans &&
+            prop.Group != PropertyGroup.start)
+        {
+            return prop;
         }
+
+        return null;
     }
 
-    private async Task HandleTradeAsync(Player currentPlayer)
+    public async Task BuyPropertyIfAvailableAsync()
     {
-        await _uiHandler.ShowMessageAsync("С каким игроком хочешь обменяться?");
-        for (int i = 0; i < _players.Count; i++)
-        {
-            if (_players[i] != currentPlayer && !_players[i].IsBankrupt)
-                await _uiHandler.ShowMessageAsync($"{i + 1}. {_players[i].Name}");
-        }
-
-        var playerChoice = await _uiHandler.GetInputAsync("Введите номер игрока");
-        if (int.TryParse(playerChoice, out int playerIndex) && playerIndex > 0 && playerIndex <= _players.Count)
-        {
-            Player otherPlayer = _players[playerIndex - 1];
-
-            // Выбор свойств текущего игрока для обмена
-            await _uiHandler.ShowMessageAsync("Выбери свои свойства для обмена (ID через запятую):");
-            foreach (var prop in currentPlayer.Properties)
-                await _uiHandler.ShowMessageAsync($"{prop.Id}. {prop.Name}");
-
-            var currentPlayerPropsInput = await _uiHandler.GetInputAsync("");
-            var currentPlayerProps = ParsePropertyInput(currentPlayerPropsInput, currentPlayer);
-
-            // Выбор свойств другого игрока для обмена
-            await _uiHandler.ShowMessageAsync("Выбери свойства другого игрока для обмена (ID через запятую):");
-            foreach (var prop in otherPlayer.Properties)
-                await _uiHandler.ShowMessageAsync($"{prop.Id}. {prop.Name}");
-
-            var otherPlayerPropsInput = await _uiHandler.GetInputAsync("");
-            var otherPlayerProps = ParsePropertyInput(otherPlayerPropsInput, otherPlayer);
-
-            // Денежная часть обмена (необязательно)
-            var moneyStr = await _uiHandler.GetInputAsync("Сколько денег предлагаешь? (0 если нет)");
-            decimal money = decimal.TryParse(moneyStr, out var moneyVal) ? moneyVal : 0;
-
-            try
-            {
-                _playerService.TradeWithPlayer(currentPlayer, otherPlayer, currentPlayerProps, otherPlayerProps, money);
-            }
-            catch (Exception ex)
-            {
-                await _uiHandler.ShowMessageAsync($"Ошибка: {ex.Message}");
-            }
-        }
+        var player = GetCurrentPlayer();
+        await _propertyService.BuyProperty(player, player.Position);
     }
 
-    private async Task HandleBuildHouseAsync(Player currentPlayer)
+
+   
+
+    public async Task HandleTradeAsync(
+     Player currentPlayer,
+     Player otherPlayer,
+     List<PropertyData> offeredProperties,
+     List<PropertyData> requestedProperties,
+     decimal money)
+    {
+        await _playerService.TradeWithPlayer(currentPlayer, otherPlayer, offeredProperties, requestedProperties, money);
+    }
+
+
+    public List<PropertyData> GetBuildableProperties(Player player)
+    {
+        // Группируем все улицы игрока по цветовой группе
+        var grouped = player.Properties
+            .Where(p => p.Type == PropertyType.street)
+            .GroupBy(p => p.Group);
+
+        var result = new List<PropertyData>();
+
+        foreach (var group in grouped)
+        {
+            var propertiesInGroup = group.ToList();
+            int totalInGroup = GetGroupSize(group.Key); // метод, который вернёт размер группы (2 или 3)
+
+            // Если игрок владеет всей группой
+            if (propertiesInGroup.Count == totalInGroup)
+            {
+                result.AddRange(propertiesInGroup);
+            }
+        }
+
+        return result;
+    }
+
+    // Пример метода для определения количества участков в группе
+    private int GetGroupSize(PropertyGroup group)
+    {
+        return group switch
+        {
+            PropertyGroup.Brown or PropertyGroup.DarkBlue => 2,
+            _ => 3
+        };
+    }
+
+
+    public async Task SaveGameAsync(string filePath)
+    {
+        var state = new GameState
+        {
+            Players = _players,
+            CurrentPlayerIndex = _currentPlayerIndex
+        };
+        await _persistenceService.SaveGameAsync(state, filePath);
+    }
+
+    public async Task LoadGameAsync(string filePath)
+    {
+        var state = await _persistenceService.LoadGameAsync(filePath);
+        _players.Clear();
+        _players.AddRange(state.Players);
+        _currentPlayerIndex = state.CurrentPlayerIndex;
+    }
+
+
+    public List<Player> GetAllPlayers()
+    {
+        return _players;
+    }
+
+    public List<PropertyData> GetDemolishableProperties(Player player)
+    {
+        return player.Properties
+            .Where(p => p.Type == PropertyType.street && p.KolHouse > 0)
+            .ToList();
+    }
+
+    public List<PropertyData> GetMortgageableProperties(Player player)
+    {
+        return player.Properties
+            .Where(p => p.Status == PropertyStatus.sold)
+            .ToList();
+    }
+
+    public List<PropertyData> GetUnmortgageableProperties(Player player)
+    {
+        return player.Properties
+            .Where(p => p.Status == PropertyStatus.pledged)
+            .ToList();
+    }
+
+    public decimal CalculateUnmortgageCost(PropertyData property)
+    {
+        return Math.Round((property.Price / 2) * 1.1m, MidpointRounding.AwayFromZero);
+    }
+
+    public async Task BuildHouseAsync(Player player, int propertyId)
+    {
+        await _propertyService.BuildHouse(player, propertyId);
+    }
+
+    public Task SellHouseAsync(Player player, int propertyId)
+        => _propertyService.SellHouse(player, propertyId);
+
+    public Task MortgagePropertyAsync(Player player, int propertyId)
+        => _propertyService.MortgageProperty(player, propertyId);
+
+    public Task UnmortgagePropertyAsync(Player player, int propertyId)
+        => _propertyService.UnmortgageProperty(player, propertyId);
+
+    public async Task HandleBuildHouseAsync(Player currentPlayer)
     {
         await _uiHandler.ShowMessageAsync("Выбери свойство для постройки дома (ID):");
         var buildableProperties = currentPlayer.Properties.Where(p => p.Type == PropertyType.street).ToList();
@@ -430,7 +422,7 @@ public class GameService : IGameService
         {
             try
             {
-                _propertyService.BuildHouse(currentPlayer, buildPropId);
+                await _propertyService.BuildHouse(currentPlayer, buildPropId);
             }
             catch (Exception ex)
             {
@@ -439,8 +431,7 @@ public class GameService : IGameService
         }
     }
 
-
-    private async Task HandleDemolishHouseAsync(Player currentPlayer)
+    public async Task HandleDemolishHouseAsync(Player currentPlayer)
     {
         await _uiHandler.ShowMessageAsync("Выбери свойство для сноса домов/отеля (ID):");
         var demolishableProperties = currentPlayer.Properties
@@ -458,7 +449,7 @@ public class GameService : IGameService
         {
             try
             {
-                _propertyService.SellHouse(currentPlayer, demolishPropId);
+                await _propertyService.SellHouse(currentPlayer, demolishPropId);
             }
             catch (Exception ex)
             {
@@ -467,7 +458,7 @@ public class GameService : IGameService
         }
     }
 
-    private async Task HandleMortgageAsync(Player currentPlayer)
+    public async Task HandleMortgageAsync(Player currentPlayer)
     {
         await _uiHandler.ShowMessageAsync("Выбери свойство для залога (ID):");
         foreach (var prop in currentPlayer.Properties)
@@ -478,7 +469,7 @@ public class GameService : IGameService
         {
             try
             {
-                _propertyService.MortgageProperty(currentPlayer, mortgagePropId);
+                await _propertyService.MortgageProperty(currentPlayer, mortgagePropId);
             }
             catch (Exception ex)
             {
@@ -487,7 +478,7 @@ public class GameService : IGameService
         }
     }
 
-    private async Task HandleUnmortgageAsync(Player currentPlayer)
+    public async Task HandleUnmortgageAsync(Player currentPlayer)
     {
         await _uiHandler.ShowMessageAsync("Выбери заложенную карточку для выкупа (ID):");
         var mortgagedProperties = currentPlayer.Properties.Where(p => p.Status == PropertyStatus.pledged).ToList();
@@ -506,7 +497,7 @@ public class GameService : IGameService
         {
             try
             {
-                _propertyService.UnmortgageProperty(currentPlayer, unmortgagePropId);
+                await _propertyService.UnmortgageProperty(currentPlayer, unmortgagePropId);
             }
             catch (Exception ex)
             {
@@ -514,5 +505,13 @@ public class GameService : IGameService
             }
         }
     }
+    private async Task ShowInitialPlayerStatesAsync()
+    {
+        await _uiHandler.ShowMessageAsync("Стартовое состояние игроков:");
 
+        foreach (var player in _players)
+        {
+            await _uiHandler.ShowMessageAsync($"{player.Name} — Баланс: {player.Balance}$, Позиция: {player.Position}");
+        }
+    }
 }

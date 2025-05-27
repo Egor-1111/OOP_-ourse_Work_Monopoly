@@ -3,28 +3,8 @@
   "WorkspaceRootPath": "D:\\Kyrsach\\MONOPOLY\\",
   "Documents": [
     {
-      "AbsoluteMoniker": "D:0:0:{FE8D06D4-DD91-4E54-A46C-0E11EDFAFA7F}|BusinessLogic\\BusinessLogic.csproj|d:\\kyrsach\\monopoly\\businesslogic\\services\\logic\\cardservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{FE8D06D4-DD91-4E54-A46C-0E11EDFAFA7F}|BusinessLogic\\BusinessLogic.csproj|solutionrelative:businesslogic\\services\\logic\\cardservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{E01A81F0-F637-41A9-A379-12E1CF682A80}|MonopolyGameApp\\MonopolyGameApp.csproj|d:\\kyrsach\\monopoly\\monopolygameapp\\mauiprogram.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{E01A81F0-F637-41A9-A379-12E1CF682A80}|MonopolyGameApp\\MonopolyGameApp.csproj|solutionrelative:monopolygameapp\\mauiprogram.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{E01A81F0-F637-41A9-A379-12E1CF682A80}|MonopolyGameApp\\MonopolyGameApp.csproj|d:\\kyrsach\\monopoly\\monopolygameapp\\app.xaml.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{E01A81F0-F637-41A9-A379-12E1CF682A80}|MonopolyGameApp\\MonopolyGameApp.csproj|solutionrelative:monopolygameapp\\app.xaml.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{E01A81F0-F637-41A9-A379-12E1CF682A80}|MonopolyGameApp\\MonopolyGameApp.csproj|d:\\kyrsach\\monopoly\\monopolygameapp\\appshell.xaml.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{E01A81F0-F637-41A9-A379-12E1CF682A80}|MonopolyGameApp\\MonopolyGameApp.csproj|solutionrelative:monopolygameapp\\appshell.xaml.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{E01A81F0-F637-41A9-A379-12E1CF682A80}|MonopolyGameApp\\MonopolyGameApp.csproj|d:\\kyrsach\\monopoly\\monopolygameapp\\appshell.xaml||{F11ACC28-31D1-4C80-A34B-F4E09D3D753C}",
-      "RelativeMoniker": "D:0:0:{E01A81F0-F637-41A9-A379-12E1CF682A80}|MonopolyGameApp\\MonopolyGameApp.csproj|solutionrelative:monopolygameapp\\appshell.xaml||{F11ACC28-31D1-4C80-A34B-F4E09D3D753C}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{E01A81F0-F637-41A9-A379-12E1CF682A80}|MonopolyGameApp\\MonopolyGameApp.csproj|d:\\kyrsach\\monopoly\\monopolygameapp\\mainpage.xaml.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{E01A81F0-F637-41A9-A379-12E1CF682A80}|MonopolyGameApp\\MonopolyGameApp.csproj|solutionrelative:monopolygameapp\\mainpage.xaml.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{FE8D06D4-DD91-4E54-A46C-0E11EDFAFA7F}|BusinessLogic\\BusinessLogic.csproj|d:\\kyrsach\\monopoly\\businesslogic\\services\\logic\\propertyservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{FE8D06D4-DD91-4E54-A46C-0E11EDFAFA7F}|BusinessLogic\\BusinessLogic.csproj|solutionrelative:businesslogic\\services\\logic\\propertyservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
       "AbsoluteMoniker": "D:0:0:{FE8D06D4-DD91-4E54-A46C-0E11EDFAFA7F}|BusinessLogic\\BusinessLogic.csproj|d:\\kyrsach\\monopoly\\businesslogic\\services\\logic\\gameservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
@@ -35,24 +15,64 @@
       "RelativeMoniker": "D:0:0:{FE8D06D4-DD91-4E54-A46C-0E11EDFAFA7F}|BusinessLogic\\BusinessLogic.csproj|solutionrelative:businesslogic\\services\\logic\\playerservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{FE8D06D4-DD91-4E54-A46C-0E11EDFAFA7F}|BusinessLogic\\BusinessLogic.csproj|d:\\kyrsach\\monopoly\\businesslogic\\services\\logic\\dice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{FE8D06D4-DD91-4E54-A46C-0E11EDFAFA7F}|BusinessLogic\\BusinessLogic.csproj|solutionrelative:businesslogic\\services\\logic\\dice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{E01A81F0-F637-41A9-A379-12E1CF682A80}|MonopolyGameApp\\MonopolyGameApp.csproj|d:\\kyrsach\\monopoly\\monopolygameapp\\mainpage.xaml.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{E01A81F0-F637-41A9-A379-12E1CF682A80}|MonopolyGameApp\\MonopolyGameApp.csproj|solutionrelative:monopolygameapp\\mainpage.xaml.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{E01A81F0-F637-41A9-A379-12E1CF682A80}|MonopolyGameApp\\MonopolyGameApp.csproj|d:\\kyrsach\\monopoly\\monopolygameapp\\view\\gameboardview.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{E01A81F0-F637-41A9-A379-12E1CF682A80}|MonopolyGameApp\\MonopolyGameApp.csproj|solutionrelative:monopolygameapp\\view\\gameboardview.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{E01A81F0-F637-41A9-A379-12E1CF682A80}|MonopolyGameApp\\MonopolyGameApp.csproj|d:\\kyrsach\\monopoly\\monopolygameapp\\mauiprogram.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{E01A81F0-F637-41A9-A379-12E1CF682A80}|MonopolyGameApp\\MonopolyGameApp.csproj|solutionrelative:monopolygameapp\\mauiprogram.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
       "AbsoluteMoniker": "D:0:0:{FE8D06D4-DD91-4E54-A46C-0E11EDFAFA7F}|BusinessLogic\\BusinessLogic.csproj|d:\\kyrsach\\monopoly\\businesslogic\\services\\interfaces\\igameservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{FE8D06D4-DD91-4E54-A46C-0E11EDFAFA7F}|BusinessLogic\\BusinessLogic.csproj|solutionrelative:businesslogic\\services\\interfaces\\igameservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{FE8D06D4-DD91-4E54-A46C-0E11EDFAFA7F}|BusinessLogic\\BusinessLogic.csproj|d:\\kyrsach\\monopoly\\businesslogic\\services\\interfaces\\igameuihandler.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{FE8D06D4-DD91-4E54-A46C-0E11EDFAFA7F}|BusinessLogic\\BusinessLogic.csproj|solutionrelative:businesslogic\\services\\interfaces\\igameuihandler.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{917DC44A-3670-4E1D-96CE-F18AD18C768E}|Monopoly.Persistence\\Monopoly.Persistence.csproj|d:\\kyrsach\\monopoly\\monopoly.persistence\\interfaces\\igamepersistenceservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{917DC44A-3670-4E1D-96CE-F18AD18C768E}|Monopoly.Persistence\\Monopoly.Persistence.csproj|solutionrelative:monopoly.persistence\\interfaces\\igamepersistenceservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{917DC44A-3670-4E1D-96CE-F18AD18C768E}|Monopoly.Persistence\\Monopoly.Persistence.csproj|d:\\kyrsach\\monopoly\\monopoly.persistence\\models\\gamestate.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{917DC44A-3670-4E1D-96CE-F18AD18C768E}|Monopoly.Persistence\\Monopoly.Persistence.csproj|solutionrelative:monopoly.persistence\\models\\gamestate.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{917DC44A-3670-4E1D-96CE-F18AD18C768E}|Monopoly.Persistence\\Monopoly.Persistence.csproj|d:\\kyrsach\\monopoly\\monopoly.persistence\\services\\gamepersistenceservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{917DC44A-3670-4E1D-96CE-F18AD18C768E}|Monopoly.Persistence\\Monopoly.Persistence.csproj|solutionrelative:monopoly.persistence\\services\\gamepersistenceservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{DD64CB2D-758C-4D11-9609-DF5AEB438905}|Domain\\Domain.csproj|d:\\kyrsach\\monopoly\\domain\\repforproperty\\propertyrepository.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{DD64CB2D-758C-4D11-9609-DF5AEB438905}|Domain\\Domain.csproj|solutionrelative:domain\\repforproperty\\propertyrepository.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
       "AbsoluteMoniker": "D:0:0:{E01A81F0-F637-41A9-A379-12E1CF682A80}|MonopolyGameApp\\MonopolyGameApp.csproj|d:\\kyrsach\\monopoly\\monopolygameapp\\mainpage.xaml||{F11ACC28-31D1-4C80-A34B-F4E09D3D753C}",
       "RelativeMoniker": "D:0:0:{E01A81F0-F637-41A9-A379-12E1CF682A80}|MonopolyGameApp\\MonopolyGameApp.csproj|solutionrelative:monopolygameapp\\mainpage.xaml||{F11ACC28-31D1-4C80-A34B-F4E09D3D753C}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{E01A81F0-F637-41A9-A379-12E1CF682A80}|MonopolyGameApp\\MonopolyGameApp.csproj|d:\\kyrsach\\monopoly\\monopolygameapp\\app.xaml||{F11ACC28-31D1-4C80-A34B-F4E09D3D753C}",
-      "RelativeMoniker": "D:0:0:{E01A81F0-F637-41A9-A379-12E1CF682A80}|MonopolyGameApp\\MonopolyGameApp.csproj|solutionrelative:monopolygameapp\\app.xaml||{F11ACC28-31D1-4C80-A34B-F4E09D3D753C}"
+      "AbsoluteMoniker": "D:0:0:{E01A81F0-F637-41A9-A379-12E1CF682A80}|MonopolyGameApp\\MonopolyGameApp.csproj|d:\\kyrsach\\monopoly\\monopolygameapp\\appshell.xaml.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{E01A81F0-F637-41A9-A379-12E1CF682A80}|MonopolyGameApp\\MonopolyGameApp.csproj|solutionrelative:monopolygameapp\\appshell.xaml.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{E01A81F0-F637-41A9-A379-12E1CF682A80}|MonopolyGameApp\\MonopolyGameApp.csproj|d:\\kyrsach\\monopoly\\monopolygameapp\\app.xaml.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{E01A81F0-F637-41A9-A379-12E1CF682A80}|MonopolyGameApp\\MonopolyGameApp.csproj|solutionrelative:monopolygameapp\\app.xaml.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{DD64CB2D-758C-4D11-9609-DF5AEB438905}|Domain\\Domain.csproj|d:\\kyrsach\\monopoly\\domain\\models\\player.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{DD64CB2D-758C-4D11-9609-DF5AEB438905}|Domain\\Domain.csproj|solutionrelative:domain\\models\\player.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{DD64CB2D-758C-4D11-9609-DF5AEB438905}|Domain\\Domain.csproj|d:\\kyrsach\\monopoly\\domain\\models\\propertydata.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{DD64CB2D-758C-4D11-9609-DF5AEB438905}|Domain\\Domain.csproj|solutionrelative:domain\\models\\propertydata.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{DD64CB2D-758C-4D11-9609-DF5AEB438905}|Domain\\Domain.csproj|d:\\kyrsach\\monopoly\\domain\\enums\\propertygroup.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{DD64CB2D-758C-4D11-9609-DF5AEB438905}|Domain\\Domain.csproj|solutionrelative:domain\\enums\\propertygroup.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{FE8D06D4-DD91-4E54-A46C-0E11EDFAFA7F}|BusinessLogic\\BusinessLogic.csproj|d:\\kyrsach\\monopoly\\businesslogic\\services\\interfaces\\ipropertyservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{FE8D06D4-DD91-4E54-A46C-0E11EDFAFA7F}|BusinessLogic\\BusinessLogic.csproj|solutionrelative:businesslogic\\services\\interfaces\\ipropertyservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     }
   ],
   "DocumentGroupContainers": [
@@ -62,150 +82,143 @@
       "DocumentGroups": [
         {
           "DockedWidth": 200,
-          "SelectedChildIndex": 0,
+          "SelectedChildIndex": 6,
           "Children": [
             {
               "$type": "Document",
-              "DocumentIndex": 0,
-              "Title": "CardService.cs",
-              "DocumentMoniker": "D:\\Kyrsach\\MONOPOLY\\BusinessLogic\\Services\\Logic\\CardService.cs",
-              "RelativeDocumentMoniker": "BusinessLogic\\Services\\Logic\\CardService.cs",
-              "ToolTip": "D:\\Kyrsach\\MONOPOLY\\BusinessLogic\\Services\\Logic\\CardService.cs",
-              "RelativeToolTip": "BusinessLogic\\Services\\Logic\\CardService.cs",
-              "ViewState": "AgIAAEsAAAAAAAAAAAAowGMAAABIAAAAAAAAAA==",
+              "DocumentIndex": 4,
+              "Title": "GameBoardView.cs",
+              "DocumentMoniker": "D:\\Kyrsach\\MONOPOLY\\MonopolyGameApp\\View\\GameBoardView.cs",
+              "RelativeDocumentMoniker": "MonopolyGameApp\\View\\GameBoardView.cs",
+              "ToolTip": "D:\\Kyrsach\\MONOPOLY\\MonopolyGameApp\\View\\GameBoardView.cs",
+              "RelativeToolTip": "MonopolyGameApp\\View\\GameBoardView.cs",
+              "ViewState": "AgIAAFMAAAAAAAAAAAAAwGgAAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-05-20T20:27:28.236Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 7,
-              "Title": "PlayerService.cs",
-              "DocumentMoniker": "D:\\Kyrsach\\MONOPOLY\\BusinessLogic\\Services\\Logic\\PlayerService.cs",
-              "RelativeDocumentMoniker": "BusinessLogic\\Services\\Logic\\PlayerService.cs",
-              "ToolTip": "D:\\Kyrsach\\MONOPOLY\\BusinessLogic\\Services\\Logic\\PlayerService.cs",
-              "RelativeToolTip": "BusinessLogic\\Services\\Logic\\PlayerService.cs",
-              "ViewState": "AgIAADUAAAAAAAAAAAAgwB8AAAAAAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-05-20T20:20:51.229Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 8,
-              "Title": "Dice.cs",
-              "DocumentMoniker": "D:\\Kyrsach\\MONOPOLY\\BusinessLogic\\Services\\Logic\\Dice.cs",
-              "RelativeDocumentMoniker": "BusinessLogic\\Services\\Logic\\Dice.cs",
-              "ToolTip": "D:\\Kyrsach\\MONOPOLY\\BusinessLogic\\Services\\Logic\\Dice.cs",
-              "RelativeToolTip": "BusinessLogic\\Services\\Logic\\Dice.cs",
-              "ViewState": "AgIAAAwAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-05-20T20:20:02.622Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 3,
-              "Title": "AppShell.xaml.cs",
-              "DocumentMoniker": "D:\\Kyrsach\\MONOPOLY\\MonopolyGameApp\\AppShell.xaml.cs",
-              "RelativeDocumentMoniker": "MonopolyGameApp\\AppShell.xaml.cs",
-              "ToolTip": "D:\\Kyrsach\\MONOPOLY\\MonopolyGameApp\\AppShell.xaml.cs",
-              "RelativeToolTip": "MonopolyGameApp\\AppShell.xaml.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAoAAAAAAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-05-20T19:15:25.643Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 2,
-              "Title": "App.xaml.cs",
-              "DocumentMoniker": "D:\\Kyrsach\\MONOPOLY\\MonopolyGameApp\\App.xaml.cs",
-              "RelativeDocumentMoniker": "MonopolyGameApp\\App.xaml.cs",
-              "ToolTip": "D:\\Kyrsach\\MONOPOLY\\MonopolyGameApp\\App.xaml.cs",
-              "RelativeToolTip": "MonopolyGameApp\\App.xaml.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAABIAAAABAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-05-20T19:34:10.735Z",
-              "EditorCaption": ""
+              "WhenOpened": "2025-05-24T16:15:09.176Z"
             },
             {
               "$type": "Document",
               "DocumentIndex": 5,
-              "Title": "MainPage.xaml.cs",
-              "DocumentMoniker": "D:\\Kyrsach\\MONOPOLY\\MonopolyGameApp\\MainPage.xaml.cs",
-              "RelativeDocumentMoniker": "MonopolyGameApp\\MainPage.xaml.cs",
-              "ToolTip": "D:\\Kyrsach\\MONOPOLY\\MonopolyGameApp\\MainPage.xaml.cs",
-              "RelativeToolTip": "MonopolyGameApp\\MainPage.xaml.cs",
-              "ViewState": "AgIAAAQAAAAAAAAAAAAkwBIAAAAAAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-05-20T19:16:43.973Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 6,
-              "Title": "GameService.cs",
-              "DocumentMoniker": "D:\\Kyrsach\\MONOPOLY\\BusinessLogic\\Services\\Logic\\GameService.cs",
-              "RelativeDocumentMoniker": "BusinessLogic\\Services\\Logic\\GameService.cs",
-              "ToolTip": "D:\\Kyrsach\\MONOPOLY\\BusinessLogic\\Services\\Logic\\GameService.cs",
-              "RelativeToolTip": "BusinessLogic\\Services\\Logic\\GameService.cs",
-              "ViewState": "AgIAAI4AAAAAAAAAAAAnwDkAAAAiAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-05-20T18:59:54.461Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 9,
-              "Title": "IGameService.cs",
-              "DocumentMoniker": "D:\\Kyrsach\\MONOPOLY\\BusinessLogic\\Services\\Interfaces\\IGameService.cs",
-              "RelativeDocumentMoniker": "BusinessLogic\\Services\\Interfaces\\IGameService.cs",
-              "ToolTip": "D:\\Kyrsach\\MONOPOLY\\BusinessLogic\\Services\\Interfaces\\IGameService.cs",
-              "RelativeToolTip": "BusinessLogic\\Services\\Interfaces\\IGameService.cs",
-              "ViewState": "AgIAAAoAAAAAAAAAAAAIwA4AAAANAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-05-20T13:31:22.493Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 1,
               "Title": "MauiProgram.cs",
               "DocumentMoniker": "D:\\Kyrsach\\MONOPOLY\\MonopolyGameApp\\MauiProgram.cs",
               "RelativeDocumentMoniker": "MonopolyGameApp\\MauiProgram.cs",
               "ToolTip": "D:\\Kyrsach\\MONOPOLY\\MonopolyGameApp\\MauiProgram.cs",
               "RelativeToolTip": "MonopolyGameApp\\MauiProgram.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAABMAAAApAAAAAAAAAA==",
+              "ViewState": "AgIAAAkAAAAAAAAAAIA5wB4AAAAFAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-05-20T19:12:17.014Z",
+              "WhenOpened": "2025-05-26T20:52:03.12Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 1,
+              "Title": "GameService.cs",
+              "DocumentMoniker": "D:\\Kyrsach\\MONOPOLY\\BusinessLogic\\Services\\Logic\\GameService.cs",
+              "RelativeDocumentMoniker": "BusinessLogic\\Services\\Logic\\GameService.cs",
+              "ToolTip": "D:\\Kyrsach\\MONOPOLY\\BusinessLogic\\Services\\Logic\\GameService.cs",
+              "RelativeToolTip": "BusinessLogic\\Services\\Logic\\GameService.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAIwBAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-05-21T06:15:05.841Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 4,
-              "Title": "AppShell.xaml",
-              "DocumentMoniker": "D:\\Kyrsach\\MONOPOLY\\MonopolyGameApp\\AppShell.xaml",
-              "RelativeDocumentMoniker": "MonopolyGameApp\\AppShell.xaml",
-              "ToolTip": "D:\\Kyrsach\\MONOPOLY\\MonopolyGameApp\\AppShell.xaml",
-              "RelativeToolTip": "MonopolyGameApp\\AppShell.xaml",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAA8AAAAAAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.003549|",
-              "WhenOpened": "2025-05-20T19:15:28.9Z",
+              "DocumentIndex": 6,
+              "Title": "IGameService.cs",
+              "DocumentMoniker": "D:\\Kyrsach\\MONOPOLY\\BusinessLogic\\Services\\Interfaces\\IGameService.cs",
+              "RelativeDocumentMoniker": "BusinessLogic\\Services\\Interfaces\\IGameService.cs",
+              "ToolTip": "D:\\Kyrsach\\MONOPOLY\\BusinessLogic\\Services\\Interfaces\\IGameService.cs",
+              "RelativeToolTip": "BusinessLogic\\Services\\Interfaces\\IGameService.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAsAAAABAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-05-21T06:33:40.683Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 3,
+              "Title": "MainPage.xaml.cs",
+              "DocumentMoniker": "D:\\Kyrsach\\MONOPOLY\\MonopolyGameApp\\MainPage.xaml.cs",
+              "RelativeDocumentMoniker": "MonopolyGameApp\\MainPage.xaml.cs",
+              "ToolTip": "D:\\Kyrsach\\MONOPOLY\\MonopolyGameApp\\MainPage.xaml.cs",
+              "RelativeToolTip": "MonopolyGameApp\\MainPage.xaml.cs",
+              "ViewState": "AgIAAIQBAAAAAAAAAAAQwJ0BAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-05-21T06:39:30.391Z",
               "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 2,
+              "Title": "PlayerService.cs",
+              "DocumentMoniker": "D:\\Kyrsach\\MONOPOLY\\BusinessLogic\\Services\\Logic\\PlayerService.cs",
+              "RelativeDocumentMoniker": "BusinessLogic\\Services\\Logic\\PlayerService.cs",
+              "ToolTip": "D:\\Kyrsach\\MONOPOLY\\BusinessLogic\\Services\\Logic\\PlayerService.cs",
+              "RelativeToolTip": "BusinessLogic\\Services\\Logic\\PlayerService.cs",
+              "ViewState": "AgIAAKIAAAAAAAAAAAAQwLUAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-05-24T13:58:14.351Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 0,
+              "Title": "PropertyService.cs",
+              "DocumentMoniker": "D:\\Kyrsach\\MONOPOLY\\BusinessLogic\\Services\\Logic\\PropertyService.cs",
+              "RelativeDocumentMoniker": "BusinessLogic\\Services\\Logic\\PropertyService.cs",
+              "ToolTip": "D:\\Kyrsach\\MONOPOLY\\BusinessLogic\\Services\\Logic\\PropertyService.cs",
+              "RelativeToolTip": "BusinessLogic\\Services\\Logic\\PropertyService.cs",
+              "ViewState": "AgIAAEwAAAAAAAAAAAAkwGgAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-05-24T15:41:01.906Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 8,
+              "Title": "GameState.cs",
+              "DocumentMoniker": "D:\\Kyrsach\\MONOPOLY\\Monopoly.Persistence\\Models\\GameState.cs",
+              "RelativeDocumentMoniker": "Monopoly.Persistence\\Models\\GameState.cs",
+              "ToolTip": "D:\\Kyrsach\\MONOPOLY\\Monopoly.Persistence\\Models\\GameState.cs",
+              "RelativeToolTip": "Monopoly.Persistence\\Models\\GameState.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAA4AAAAFAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-05-26T20:43:49.249Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 9,
+              "Title": "GamePersistenceService.cs",
+              "DocumentMoniker": "D:\\Kyrsach\\MONOPOLY\\Monopoly.Persistence\\Services\\GamePersistenceService.cs",
+              "RelativeDocumentMoniker": "Monopoly.Persistence\\Services\\GamePersistenceService.cs",
+              "ToolTip": "D:\\Kyrsach\\MONOPOLY\\Monopoly.Persistence\\Services\\GamePersistenceService.cs",
+              "RelativeToolTip": "Monopoly.Persistence\\Services\\GamePersistenceService.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAABUAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-05-26T18:41:05.307Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 7,
+              "Title": "IGamePersistenceService.cs",
+              "DocumentMoniker": "D:\\Kyrsach\\MONOPOLY\\Monopoly.Persistence\\Interfaces\\IGamePersistenceService.cs",
+              "RelativeDocumentMoniker": "Monopoly.Persistence\\Interfaces\\IGamePersistenceService.cs",
+              "ToolTip": "D:\\Kyrsach\\MONOPOLY\\Monopoly.Persistence\\Interfaces\\IGamePersistenceService.cs",
+              "RelativeToolTip": "Monopoly.Persistence\\Interfaces\\IGamePersistenceService.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAgAAAABAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-05-26T18:40:39.999Z"
             },
             {
               "$type": "Document",
               "DocumentIndex": 10,
-              "Title": "IGameUIHandler.cs",
-              "DocumentMoniker": "D:\\Kyrsach\\MONOPOLY\\BusinessLogic\\Services\\Interfaces\\IGameUIHandler.cs",
-              "RelativeDocumentMoniker": "BusinessLogic\\Services\\Interfaces\\IGameUIHandler.cs",
-              "ToolTip": "D:\\Kyrsach\\MONOPOLY\\BusinessLogic\\Services\\Interfaces\\IGameUIHandler.cs",
-              "RelativeToolTip": "BusinessLogic\\Services\\Interfaces\\IGameUIHandler.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAA4AAAAAAAAAAAAAAA==",
+              "Title": "PropertyRepository.cs",
+              "DocumentMoniker": "D:\\Kyrsach\\MONOPOLY\\Domain\\RepForProperty\\PropertyRepository.cs",
+              "RelativeDocumentMoniker": "Domain\\RepForProperty\\PropertyRepository.cs",
+              "ToolTip": "D:\\Kyrsach\\MONOPOLY\\Domain\\RepForProperty\\PropertyRepository.cs",
+              "RelativeToolTip": "Domain\\RepForProperty\\PropertyRepository.cs",
+              "ViewState": "AgIAAHQCAAAAAAAAAAAQwJICAAAkAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-05-20T19:16:29.08Z",
-              "EditorCaption": ""
+              "WhenOpened": "2025-05-24T23:23:25.085Z"
             },
             {
               "$type": "Document",
@@ -215,23 +228,81 @@
               "RelativeDocumentMoniker": "MonopolyGameApp\\MainPage.xaml",
               "ToolTip": "D:\\Kyrsach\\MONOPOLY\\MonopolyGameApp\\MainPage.xaml",
               "RelativeToolTip": "MonopolyGameApp\\MainPage.xaml",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAABwAAABHAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.003549|",
-              "WhenOpened": "2025-05-20T19:20:24.72Z",
-              "EditorCaption": ""
+              "WhenOpened": "2025-05-26T20:33:48.901Z"
             },
             {
               "$type": "Document",
               "DocumentIndex": 12,
-              "Title": "App.xaml",
-              "DocumentMoniker": "D:\\Kyrsach\\MONOPOLY\\MonopolyGameApp\\App.xaml",
-              "RelativeDocumentMoniker": "MonopolyGameApp\\App.xaml",
-              "ToolTip": "D:\\Kyrsach\\MONOPOLY\\MonopolyGameApp\\App.xaml",
-              "RelativeToolTip": "MonopolyGameApp\\App.xaml",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAA4AAAAAAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.003549|",
-              "WhenOpened": "2025-05-20T19:52:13.174Z",
-              "EditorCaption": ""
+              "Title": "AppShell.xaml.cs",
+              "DocumentMoniker": "D:\\Kyrsach\\MONOPOLY\\MonopolyGameApp\\AppShell.xaml.cs",
+              "RelativeDocumentMoniker": "MonopolyGameApp\\AppShell.xaml.cs",
+              "ToolTip": "D:\\Kyrsach\\MONOPOLY\\MonopolyGameApp\\AppShell.xaml.cs",
+              "RelativeToolTip": "MonopolyGameApp\\AppShell.xaml.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-05-26T18:28:36.24Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 14,
+              "Title": "Player.cs",
+              "DocumentMoniker": "D:\\Kyrsach\\MONOPOLY\\Domain\\Models\\Player.cs",
+              "RelativeDocumentMoniker": "Domain\\Models\\Player.cs",
+              "ToolTip": "D:\\Kyrsach\\MONOPOLY\\Domain\\Models\\Player.cs",
+              "RelativeToolTip": "Domain\\Models\\Player.cs",
+              "ViewState": "AgIAAAEAAAAAAAAAAAAmwBoAAAAbAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-05-26T10:13:40.465Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 13,
+              "Title": "App.xaml.cs",
+              "DocumentMoniker": "D:\\Kyrsach\\MONOPOLY\\MonopolyGameApp\\App.xaml.cs",
+              "RelativeDocumentMoniker": "MonopolyGameApp\\App.xaml.cs",
+              "ToolTip": "D:\\Kyrsach\\MONOPOLY\\MonopolyGameApp\\App.xaml.cs",
+              "RelativeToolTip": "MonopolyGameApp\\App.xaml.cs",
+              "ViewState": "AgIAAAUAAAAAAAAAAAA4wCEAAAAEAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-05-25T16:48:02.376Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 15,
+              "Title": "PropertyData.cs",
+              "DocumentMoniker": "D:\\Kyrsach\\MONOPOLY\\Domain\\Models\\PropertyData.cs",
+              "RelativeDocumentMoniker": "Domain\\Models\\PropertyData.cs",
+              "ToolTip": "D:\\Kyrsach\\MONOPOLY\\Domain\\Models\\PropertyData.cs",
+              "RelativeToolTip": "Domain\\Models\\PropertyData.cs",
+              "ViewState": "AgIAAAgAAAAAAAAAAAAcwCUAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-05-24T23:23:15.048Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 17,
+              "Title": "IPropertyService.cs",
+              "DocumentMoniker": "D:\\Kyrsach\\MONOPOLY\\BusinessLogic\\Services\\Interfaces\\IPropertyService.cs",
+              "RelativeDocumentMoniker": "BusinessLogic\\Services\\Interfaces\\IPropertyService.cs",
+              "ToolTip": "D:\\Kyrsach\\MONOPOLY\\BusinessLogic\\Services\\Interfaces\\IPropertyService.cs",
+              "RelativeToolTip": "BusinessLogic\\Services\\Interfaces\\IPropertyService.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-05-24T15:40:56.173Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 16,
+              "Title": "PropertyGroup.cs",
+              "DocumentMoniker": "D:\\Kyrsach\\MONOPOLY\\Domain\\Enums\\PropertyGroup.cs",
+              "RelativeDocumentMoniker": "Domain\\Enums\\PropertyGroup.cs",
+              "ToolTip": "D:\\Kyrsach\\MONOPOLY\\Domain\\Enums\\PropertyGroup.cs",
+              "RelativeToolTip": "Domain\\Enums\\PropertyGroup.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAuwAAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-05-24T23:15:59.277Z"
             }
           ]
         }

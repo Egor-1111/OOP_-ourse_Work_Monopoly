@@ -617,7 +617,7 @@ public class PropertyRepository
                 4, new PropertyData
                 {
                     Id = 4,
-                    Group = PropertyGroup.kazna100,
+                    Group = PropertyGroup.kazna200,
                     Name = "Сбор денег",
                     BoardPosition = 4,
                 }
@@ -626,7 +626,7 @@ public class PropertyRepository
                 38, new PropertyData
                 {
                     Id = 38,
-                    Group = PropertyGroup.kazna200,
+                    Group = PropertyGroup.kazna100,
                     Name = "Сбор денег",
                     BoardPosition = 38,
                 }

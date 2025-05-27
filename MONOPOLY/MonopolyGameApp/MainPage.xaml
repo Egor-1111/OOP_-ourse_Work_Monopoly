@@ -1,10 +1,113 @@
 ﻿<?xml version="1.0" encoding="utf-8" ?>
 <ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:views="clr-namespace:Monopoly.MauiUI.Views"
              x:Class="MonopolyGameApp.MainPage">
+    <Grid RowDefinitions="Auto,*"
+          ColumnDefinitions="2*,6*,2*"
+          Padding="10"
+          ColumnSpacing="20">
 
-    <StackLayout Padding="20">
-        <Label x:Name="MessageLabel" Text="Добро пожаловать!" FontSize="24"/>
-    </StackLayout>
+        <!-- Левая панель: кнопки -->
+        
+        <StackLayout Grid.Row="0" Grid.Column="0" VerticalOptions="Start" Spacing="10">
+            <Label Text="Игровые действия" FontSize="18" FontAttributes="Bold"/>
+            <Editor x:Name="PlayerNamesEditor" HeightRequest="50"  Margin="0,40,0,0" />
+            <Button x:Name="StartGameButton" Text="Начать игру" Clicked="OnStartGameClicked" Margin="0,0,0,20"/>
+            <Button x:Name="RollDiceButton" Text="Бросить кубики 🎲" Clicked="OnRollDiceClicked" IsVisible="False"/>
+            <Button x:Name="EndTurnButton" Text="Закончить ход" Clicked="OnEndTurnClicked" IsVisible="False"/>
+            <Button x:Name="ActionButton" Text="Действия" Clicked="OnActionClicked" IsVisible="False"/>
 
+            <Button Text="Сохранить игру"
+        Clicked="OnSaveGameClicked"
+        Margin="0,10,0,0"/>
+
+            <Button Text="Загрузить игру"
+        Clicked="OnLoadGameClicked"/>
+
+
+            <StackLayout x:Name="ActionPanel" IsVisible="False" Spacing="5">
+                <Button Text="Обменяться" Clicked="OnTradeClicked" />
+                <Button Text="Построить" Clicked="OnBuildClicked" />
+                <Button Text="Снести" Clicked="OnDemolishClicked" />
+                <Button Text="Заложить" Clicked="OnMortgageClicked" />
+                <Button Text="Выкупить" Clicked="OnUnmortgageClicked" />
+                <Button Text="Готово" Clicked="OnActionsDoneClicked" />
+            </StackLayout>
+
+            <Button x:Name="BuyButton"
+                 Text="Купить"
+                 Clicked="OnBuyClicked"
+                 IsVisible="False" />
+
+            <Button x:Name="SkipBuyButton"
+                Text="Не покупать"
+                Clicked="OnSkipBuyClicked"
+                   IsVisible="False" />
+        </StackLayout>
+
+        <!-- Центральная часть: игровое поле -->
+        <StackLayout Grid.Row="0" Grid.Column="1" HorizontalOptions="Center" VerticalOptions="Start">
+            <Label x:Name="StatusLabel" FontSize="20" Text="Добро пожаловать в Монополию!" Margin="0,0,0,10"/>
+            <views:GameBoardView x:Name="GameBoard"
+                           HeightRequest="600"
+                           WidthRequest="600"
+                           BackgroundColor="White"
+                           IsVisible="False"/>
+
+        </StackLayout>
+
+        <!-- Правая панель: легенда -->
+        <StackLayout Grid.Row="0" Grid.Column="2" VerticalOptions="Start" Spacing="3">
+            <StackLayout.Resources>
+                <Style TargetType="Label">
+                    <Setter Property="FontSize" Value="12" />
+                </Style>
+            </StackLayout.Resources>
+
+            <Label Text="Легенда по позициям" FontSize="18" FontAttributes="Bold"/>
+            <Label Text="0 - ВПЕРЕД"/>
+            <Label Text="1 - ШКОЛА ГАРРИ ХЕРПСОНА"/>
+            <Label Text="2 - Казна"/>
+            <Label Text="3 - МАГАЗИН НУЖНЫЕ ВЕЩИ"/>
+            <Label Text="4 - Сбор денег 200"/>
+            <Label Text="5 - ПОЕЗД-ПРИЗРАК"/>
+            <Label Text="6 - АНАТОМИЧЕСКИЙ ПАРК"/>
+            <Label Text="7 - Шанс"/>
+            <Label Text="8 - ЗЕМЛЯ С-137"/>
+            <Label Text="9 - ГАЗОРПАЗОРП"/>
+            <Label Text="10 - Сидим в тюрьме или проходим мимо ее"/>
+            <Label Text="11 - БЛИПС ЭНД ЧИТЦ"/>
+            <Label Text="12 - МИКРОВСЕЛЕННАЯ"/>
+            <Label Text="13 - ПЛАНЕТА МИР ШЕСТЕРЁНОК"/>
+            <Label Text="14 - ДЖЕРИ-СЛИЗНЯК"/>
+            <Label Text="15 - КОРАБЛЬ ЗИГЕРИОН"/>
+            <Label Text="16 - МИР ФАНТАЗИЙ"/>
+            <Label Text="17 - Казна"/>
+            <Label Text="18 - ПЛУТОН"/>
+            <Label Text="19 - ПЛАНЕТА СУДНОЙ НОЧИ"/>
+            <Label Text="20 - Простой"/>
+            <Label Text="21 - НУПТИИ 4"/>
+            <Label Text="22 - Шанс"/>
+            <Label Text="23 - ПЛАНЕТА ЛОМБАРДОВ"/>
+            <Label Text="24 - ПЛАНЕТА ЮНИТИ"/>
+            <Label Text="25 - КОРАБЛЬ S.S. ИНДЕПЕНДЕНС"/>
+            <Label Text="26 - ГОСПИТАЛЬ СВ. ГЛУПИ НУПСА"/>
+            <Label Text="27 - ИЗМЕРЕНИЕ КРОМУЛА"/>
+            <Label Text="28 - МИНИВСЕЛЕННАЯ"/>
+            <Label Text="29 - ЦИТАДЕЛЬ РИКОВ"/>
+            <Label Text="30 - Тюрьма"/>
+            <Label Text="31 - ПЛАНЕТА ЧЕЛОВЕКОПТИЦ"/>
+            <Label Text="32 - ПЛАНЕТА СКВОЧИ"/>
+            <Label Text="33 - Казна"/>
+            <Label Text="34 - КРОШЕЧНАЯ ПЛАНЕТА 9"/>
+            <Label Text="35 - КОРАБЛЬ БЕТА 7"/>
+            <Label Text="36 - Шанс"/>
+            <Label Text="37 - СПАЛЬНЯ МОРТИ"/>
+            <Label Text="38 - Сбор денег 100"/>
+            <Label Text="39 - ГАРАЖ РИКА"/>
+        </StackLayout>
+
+
+    </Grid>
 </ContentPage>

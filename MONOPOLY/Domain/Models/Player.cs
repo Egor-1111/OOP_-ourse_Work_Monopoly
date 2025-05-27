@@ -3,7 +3,7 @@ namespace Domain.Models
 {
     public class Player
     {
-        public string Name { get; }
+        public string Name { get; set; }
         public decimal Balance { get; set; } = 1500;
         public int Position { get; set; } = 0;
         // купленые карточки улич 
@@ -19,8 +19,12 @@ namespace Domain.Models
 
         public int DoubleThenTurma { get; set; } = 0;
 
+        public bool IsDouble { get; set; } = false;
+
         // В класс Player добавить:
         public bool HasGetOutOfJailFreeCard { get; set; } = false;
+
+        public Player() { }
         public Player(string name)
         {
             Name = name;

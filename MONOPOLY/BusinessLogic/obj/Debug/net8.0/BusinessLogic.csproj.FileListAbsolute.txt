@@ -13,3 +13,6 @@ D:\Kyrsach\MONOPOLY\BusinessLogic\obj\Debug\net8.0\BusinessLogic.dll
 D:\Kyrsach\MONOPOLY\BusinessLogic\obj\Debug\net8.0\refint\BusinessLogic.dll
 D:\Kyrsach\MONOPOLY\BusinessLogic\obj\Debug\net8.0\BusinessLogic.pdb
 D:\Kyrsach\MONOPOLY\BusinessLogic\obj\Debug\net8.0\ref\BusinessLogic.dll
+D:\Kyrsach\MONOPOLY\BusinessLogic\obj\Debug\net8.0\BusinessLogic.sourcelink.json
+D:\Kyrsach\MONOPOLY\BusinessLogic\bin\Debug\net8.0\Monopoly.Persistence.dll
+D:\Kyrsach\MONOPOLY\BusinessLogic\bin\Debug\net8.0\Monopoly.Persistence.pdb

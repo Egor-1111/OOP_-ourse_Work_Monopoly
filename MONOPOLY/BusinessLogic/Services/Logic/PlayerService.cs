@@ -16,30 +16,34 @@ public class PlayerService : IPlayerService
     {
         _propertyRepository = propertyRepository;
     }
+    private IGameUIHandler? _uiHandler;
 
-    public void SendToJail(Player player)
+    public void SetUIHandler(IGameUIHandler handler)
+    {
+        _uiHandler = handler;
+    }
+
+    public async Task SendToJail(Player player)
     {
         player.Position = 10;
         player.Status = PlayerStatus.InJail;
         player.KolInTurma = 0;
-        Console.WriteLine($"{player.Name} отправлен в тюрьму!");
+        await _uiHandler.ShowMessageAsync($"{player.Name} отправлен в тюрьму!");
     }
 
 
 
-    public void AttemptToLeaveJail(Player player, Dice dice)
+    public async Task AttemptToLeaveJail(Player player, Dice dice)
     {
 
 
         dice.Roll();
-        Console.WriteLine($"Игрок {player.Name} бросает кубики: {dice.Value1} и {dice.Value2}");
 
         if (dice.IsDouble)
         {
             player.Status = PlayerStatus.Active;
             player.KolInTurma = 0;
             player.DoubleThenTurma = 1;
-            Console.WriteLine($"{player.Name} выбросил дубль и выходит из тюрьмы!");
             return;
         }
 
@@ -50,21 +54,15 @@ public class PlayerService : IPlayerService
             // Автоматическая оплата после 3 ходов
             PayToLeaveJail(player);
         }
-        else
-        {
-            Console.WriteLine($"{player.Name} остается в тюрьме. Ход {player.KolInTurma}/2");
-           
-        }
     }
 
-    public void PayToLeaveJail(Player player)
+    public async Task PayToLeaveJail(Player player)
     {
         player.Balance -= 50;
         player.Status = PlayerStatus.Active;
         player.KolInTurma = 0;
-        Console.WriteLine($"{player.Name} заплатил {50}$ и вышел из тюрьмы.");
     }
-    public void  MovePlear (Player player,int step)
+    public async Task  MovePlear (Player player,int step)
     {
          player.Position += step;
         if(player.Position > 39)
@@ -73,15 +71,15 @@ public class PlayerService : IPlayerService
         }
         int newpoz = player.Position % 40;
         player.Position = newpoz;
-        Console.WriteLine($"Игрок перешел на клетку {player.Position}");
+        await _uiHandler.UpdatePlayerPosition(player.Name,player.Position);
     }
 
-    public void GetBalace(Player player) {
-        Console.WriteLine($"Балнс у угрока {player.Balance}");    
+    public async Task GetBalace(Player player) {
+        await _uiHandler.ShowMessageAsync($"Балнс у угрока {player.Balance}");    
     }
 
     // оплата оренды для улиц
-    public void PayRentForStreet(Player otdast, Player polych , int propertyId) {
+    public async Task PayRentForStreet(Player otdast, Player polych , int propertyId) {
         var property = _propertyRepository.GetById(propertyId);
         int rent = 0;
         if (property.KolHouse == 0) rent = property.BaseRent;
@@ -96,7 +94,7 @@ public class PlayerService : IPlayerService
 
     }
     // оплата оренды для дорог
-    public void PayRentForDoroga(Player otdast, Player polych, int propertyId)
+    public async Task PayRentForDoroga(Player otdast, Player polych, int propertyId)
     {
         int rent_otdast = 0;
         var property = _propertyRepository.GetById(propertyId);
@@ -115,79 +113,73 @@ public class PlayerService : IPlayerService
 
     }
     // оплата оренды для коммунальных предприятий
-    public void PayRentForCommunal(Player otdast, Player polych, int propertyId,Dice dice)
+    public async Task PayRentForCommunal(Player otdast, Player polych, int propertyId,Dice dice)
     {
         var property = _propertyRepository.GetById(propertyId);
         var allCommunal = _propertyRepository.GetByGroup(PropertyGroup.communal);
         int kolCommunalVladelca = allCommunal.Count(d => d.Owner == polych);
         polych.KolComunal = kolCommunalVladelca;
         int rent = 0;
-        Console.WriteLine($"Кубик бросает {polych.Name}. Нажмите Enter чтобы бросить кубики...");
+        await _uiHandler.ShowMessageAsync($"Кубик бросает {polych.Name}. Нажмите Enter чтобы бросить кубики...");
         Console.ReadLine();
         // Бросок кубиков
         dice.Roll();
         if (kolCommunalVladelca == 1)
         {
-            Console.WriteLine($"Выпало: {dice.Total} тоесть игрок {polych.Name} получит {dice.Total} * 4");
+            await _uiHandler.ShowMessageAsync($"Выпало: {dice.Total} тоесть игрок {polych.Name} получит {dice.Total} * 4");
             rent = dice.Total * 4;
         }else if(kolCommunalVladelca == 2)
         {
-            Console.WriteLine($"Выпало: {dice.Total} тоесть игрок {polych.Name} получит {dice.Total} * 10");
+            await _uiHandler.ShowMessageAsync($"Выпало: {dice.Total} тоесть игрок {polych.Name} получит {dice.Total} * 10");
             rent = dice.Total * 10;
         }
         otdast.Balance -= rent;
         polych.Balance += rent;
     }
 
-    public void TradeWithPlayer(Player currentPlayer, Player otherPlayer, List<PropertyData> currentPlayerProperties, List<PropertyData> otherPlayerProperties, decimal moneyOffered = 0)
+    public Task TradeWithPlayer(
+    Player currentPlayer,
+    Player otherPlayer,
+    List<PropertyData> currentPlayerProperties,
+    List<PropertyData> otherPlayerProperties,
+    decimal moneyOffered = 0)
     {
+        // Проверка, что у игроков есть выбранные свойства
+        if (currentPlayerProperties.Any(p => p.Owner != currentPlayer))
+            throw new InvalidOperationException("У текущего игрока нет некоторых из выбранных свойств.");
 
-        Console.WriteLine("Игрок с которам обмениваются согласен (y/n)?");
-        var input = Console.ReadLine();
+        if (otherPlayerProperties.Any(p => p.Owner != otherPlayer))
+            throw new InvalidOperationException("У другого игрока нет некоторых из выбранных свойств.");
 
-        if (input?.ToLower() == "y")
+        // Проверка баланса
+        if (moneyOffered > 0 && currentPlayer.Balance < moneyOffered)
+            throw new InvalidOperationException("Недостаточно средств для обмена.");
+
+        // Передача свойств
+        foreach (var prop in currentPlayerProperties)
         {
-            // Проверка, что у игроков есть выбранные свойства
-            if (currentPlayerProperties.Any(p => p.Owner != currentPlayer))
-                throw new InvalidOperationException("У текущего игрока нет некоторых из выбранных свойств.");
-
-            if (otherPlayerProperties.Any(p => p.Owner != otherPlayer))
-                throw new InvalidOperationException("У другого игрока нет некоторых из выбранных свойств.");
-
-            // Проверка баланса, если есть денежная часть обмена
-            if (moneyOffered > 0 && currentPlayer.Balance < moneyOffered)
-                throw new InvalidOperationException("Недостаточно средств для обмена.");
-
-
-            // Передача свойств
-            foreach (var prop in currentPlayerProperties)
-            {
-                prop.Owner = otherPlayer;
-                otherPlayer.Properties.Add(prop);
-                currentPlayer.Properties.Remove(prop);
-            }
-
-            foreach (var prop in otherPlayerProperties)
-            {
-                prop.Owner = currentPlayer;
-                currentPlayer.Properties.Add(prop);
-                otherPlayer.Properties.Remove(prop);
-            }
-
-            // Передача денег (если есть)
-            if (moneyOffered > 0)
-            {
-                currentPlayer.Balance -= moneyOffered;
-                otherPlayer.Balance += moneyOffered;
-            }
-
-            Console.WriteLine("Обмен успешно завершен!");
+            prop.Owner = otherPlayer;
+            otherPlayer.Properties.Add(prop);
+            currentPlayer.Properties.Remove(prop);
         }
-        else
+
+        foreach (var prop in otherPlayerProperties)
         {
-            Console.WriteLine("Обмен не завершен!");
+            prop.Owner = currentPlayer;
+            currentPlayer.Properties.Add(prop);
+            otherPlayer.Properties.Remove(prop);
         }
+
+        // Передача денег
+        if (moneyOffered > 0)
+        {
+            currentPlayer.Balance -= moneyOffered;
+            otherPlayer.Balance += moneyOffered;
+        }
+
+        return Task.CompletedTask;
     }
 
-    
+
+
 }
